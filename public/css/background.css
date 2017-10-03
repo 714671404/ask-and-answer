@@ -1,0 +1,16 @@
+body {
+    background-color: #f4f4f4;
+    margin: 0px;
+    overflow: hidden;
+}
+.LoR {
+    height:405px;
+    width:364px;
+    overflow:hidden;
+//background:url(images/logo.png) 0 0 no-repeat;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin:-102px auto auto -82px;
+    z-index:2;
+}
