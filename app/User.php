@@ -26,4 +26,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function is_user($user)
+    {
+        $status = 0;
+        $is_user = User::where('name', $user)->get();
+        if (empty($is_user[0])) {
+            $status = 1;
+        }
+        return $status;
+    }
 }

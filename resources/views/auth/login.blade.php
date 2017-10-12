@@ -24,16 +24,20 @@
                         <div class="content-input">
 
                             <!--注册列表-->
-                            <form method="post" novalidate="novalidate" action="" style="display: block" id="login_1">
+                            <form method="post" novalidate="novalidate" action="/user" style="display: block" id="login_1" autocomplete="off" onsubmit="return varification(this);">
+                                {{ csrf_field() }}
                                 <div class="group-inputs">
                                     <div class="input-wrapper">
-                                        <input type="text" name="" aria-lable="手机号或邮箱" placeholder="手机号或邮箱" required="">
+                                        <input type="text" name="user" aria-lable="姓名" placeholder="姓名" onclick="is_hidden(0);">
+                                        <label class="error"></label>
                                     </div>
                                     <div class="input-wrapper">
-                                        <input type="password" name="" aria-lable="密码" placeholder="密码" required="">
+                                        <input type="email" name="email" aria-lable="邮箱" placeholder="邮箱" onclick="is_hidden(1);">
+                                        <label class="error"></label>
                                     </div>
                                     <div class="input-wrapper">
-                                        <input type="password" name="" aria-lable="密码" placeholder="密码" required="">
+                                        <input type="password" name="password" aria-lable="密码" placeholder="密码" onclick="is_hidden(2);">
+                                        <label class="error"></label>
                                     </div>
                                 </div>
                                 <div class="button-wrapper">
@@ -42,11 +46,11 @@
                             </form>
 
                             <!--登陆列表-->
-                            <form method="POST" novalidate="novalidate" action="" style="display: none;" id="login_2">
-
+                            <form method="POST" novalidate="novalidate" action="" style="display: none;" id="login_2" onsubmit="return false">
+                                {{ csrf_field() }}
                                 <div class="group-inputs">
                                     <div class="input-wrapper">
-                                        <input type="text" name="account" aria-label="手机号或邮箱" placeholder="手机号或邮箱" required="">
+                                        <input type="text" name="user" aria-label="手机号或邮箱" placeholder="手机号或邮箱" required="">
                                     </div>
                                     <div class="input-wrapper">
                                         <input type="password" name="password" aria-label="密码" placeholder="密码" required="">
@@ -65,34 +69,9 @@
         @endsection
 
         @section('js')
-            <script type="text/javascript" src="js/three.min.js"></script>
+            <script type="text/javascript" src="/js/three.min.js"></script>
             <script type="text/javascript" src="/js/background.js"></script>
-            <script>
-                function login(number)
-                {
-                    var number = parseInt(number);
-                    var span = document.getElementById('content-button-span');
-//                    if (document.getElementById('login_1').style.display === "none" && number === 1) {
-                        document.getElementById('login_1').style.display="block";
-                        if (number === 1) {
-                        document.getElementById('login_2').style.display="none";
-                        family(span, 1);
-                    } else {
-                        document.getElementById('login_2').style.display="block";
-                        document.getElementById('login_1').style.display="none";
-                        family(span, 2);
-                    }
-                    return false;
-                }
-                function family(span, number)
-                {
-                    var span = span;
-                    var number = parseInt(number);
-                    if (!(number === 1)) {
-                        span.style.marginLeft = "82px";
-                    } else {
-                        span.style.marginLeft = "17px";
-                    }
-                }
-            </script>
+            <script type="text/javascript" src="/js/cornerstone.js"></script>
+            <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+            <script type="text/javascript" src="/js/login_register.js"></script>
         @endsection
